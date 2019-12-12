@@ -57,6 +57,8 @@ function updateLastCommit {
   echo "[commit] updating modSha256 to ${mod_sha256}"
 
   updatePackageFile $package_file $version $remote_commit $sha256 $mod_sha256
+
+  nix-build -A "${PACKAGE}-unstable"
 }
 
 function updateLastTag {
@@ -84,6 +86,8 @@ function updateLastTag {
   echo "[tag] updating modSha256 to ${mod_sha256}"
 
   updatePackageFile $package_file $version $remote_rev $sha256 $mod_sha256
+
+  nix-build -A "$PACKAGE"
 }
 
 
