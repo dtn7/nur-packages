@@ -1,17 +1,15 @@
-{ lib, fetchFromGitHub, buildGoModule }:
+{ lib, fetchFromGitHub, buildGoModule
+, version, rev, sha256, modSha256 }:
 
 buildGoModule rec {
   name = "dtn7-go";
-  version = "0.5.2";
+  inherit version modSha256;
 
   src = fetchFromGitHub {
+    inherit rev sha256;
     owner = "dtn7";
     repo = "dtn7-go";
-    rev = "v${version}";
-    sha256 = "1i6i98jimp6k3m4b6hh26hwhmm0s0mafmf9584h02bi1z51r6b11";
   };
-
-  modSha256 = "1rbpq6b1c3pfvrlb53ynfk7d53ylsp90c3m8k3k7wjp0sy982li5";
 
   meta = with lib; {
     description = "Delay-tolerant networking software suite, Bundle Protocol Version 7";
