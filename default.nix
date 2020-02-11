@@ -8,7 +8,7 @@
 
 { pkgs ? import <nixpkgs> {} }:
 
-{
+rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
@@ -20,4 +20,8 @@
   dtn7-rs = pkgs.callPackage ./pkgs/dtn7-rs { };
 
   tinycbor = pkgs.callPackage ./pkgs/tinycbor { };
+
+  upcn = pkgs.callPackage ./pkgs/upcn {
+    inherit tinycbor;
+  };
 }
