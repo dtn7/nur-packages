@@ -1,4 +1,7 @@
-# Nix User Repository for dtn7 [![Build Status](https://github.com/dtn7/nur-packages/workflows/Update%20dtn7-go%20NUR%20packages/badge.svg)](https://github.com/dtn7/nur-packages/actions)
+# Nix User Repository for dtn7
+
+![Build Status](https://github.com/dtn7/nur-packages/workflows/Build%20all/badge.svg)
+![Build Status](https://github.com/dtn7/nur-packages/workflows/Update%20dtn7-go/badge.svg)
 
 This is a [NUR](https://github.com/nix-community/NUR) repository for:
 
