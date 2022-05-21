@@ -36,7 +36,7 @@ EOF
 
 # calculateGoSha PACKAGE
 function calculateGoSha {
-  nix-build -A "$1" 2>&1 | sed -n 's/ *got: *sha256:\(.*\)/\1/p'
+  nix-build -A "$1" 2>&1 | sed -n 's/ *got: *\(sha256-.*\)/\1/p'
 }
 
 # updatePkg BRANCH (stable|unstable)
@@ -70,7 +70,7 @@ function updatePkg {
   echo "[${1}] setting version to ${version} with checksum ${sha256}"
 
   updatePackageFile "$package_file" "$version" "$remote_rev" "$sha256" \
-    "0000000000000000000000000000000000000000000000000000"
+    "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
 
   local -r pkg_name="${PACKAGE}$([[ "$1" == "unstable" ]] && echo "-${1}")"
   local -r vendor_sha256="$(calculateGoSha "$pkg_name")"
